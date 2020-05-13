@@ -1,4 +1,5 @@
 //Evan Garvey
+//Home automation system FYP - CloudHome
 
 package com.example.homeautomation;
 

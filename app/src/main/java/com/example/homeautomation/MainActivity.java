@@ -1,5 +1,6 @@
 //Evan Garvey
 //Home automation system FYP - CloudHome
+//G00322695
 
 package com.example.homeautomation;
 
@@ -177,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+            // camera pi video same ip address as phone pi - vmedia wifi
         preview.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 /*
@@ -278,7 +279,7 @@ void  subscribe(){
         e.printStackTrace();
     }
 }
-
+// ip address for fingerprint sensor. not used
 void Login2(){
 
     //while(login_done == false) {
@@ -292,7 +293,7 @@ void Login2(){
         final LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.login, null);
         final EditText user = (EditText) linearLayout.findViewById(R.id.user);
         final EditText passwd = (EditText) linearLayout.findViewById(R.id.password);
-        final EditText ipadd = (EditText) linearLayout.findViewById(R.id.ip);
+        //final EditText ipadd = (EditText) linearLayout.findViewById(R.id.ip);
         //final Button login = (Button) linearLayout.findViewById(R.id.login);
         final AlertDialog builder = new AlertDialog.Builder(this)
                 .setPositiveButton("Cancel", null)
@@ -308,7 +309,7 @@ void Login2(){
 
                 String user_in = user.getText().toString();
                 String pass_in = passwd.getText().toString();
-                ipaddress = ipadd.getText().toString();
+                //ipaddress = ipadd.getText().toString();
 
                 if((user_in.equals("evan"))&&(pass_in.equals("evan"))) {login_done = true;
                 return ;

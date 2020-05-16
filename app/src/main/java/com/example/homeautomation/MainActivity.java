@@ -29,6 +29,8 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 import androidx.appcompat.app.AlertDialog;
 import android.content.DialogInterface;
 
@@ -42,19 +44,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Switch onoff = (Switch)findViewById(R.id.onoff);
-        Switch leftright = (Switch)findViewById(R.id.leftright);
-        Switch lamp = (Switch)findViewById(R.id.lamp);
-        final WebView video = (WebView) findViewById(R.id.videoview);
-        Button preview = (Button) findViewById(R.id.prview);
-        final TextView temp = (TextView) findViewById(R.id.temp);
-        final TextView hum = (TextView) findViewById(R.id.hum);
-        final TextView pres = (TextView) findViewById(R.id.press);
-        final TextView alltitude = (TextView) findViewById(R.id.allt);
-        final TextView kitchen = (TextView) findViewById(R.id.kitchen);
-        final TextView living_room = (TextView) findViewById(R.id.living);
-        final TextView hall = (TextView) findViewById(R.id.hall);
-        final TextView stairs = (TextView) findViewById(R.id.stair);
+        Switch onoff = findViewById(R.id.onoff);
+        Switch leftright = findViewById(R.id.leftright);
+        Switch lamp = findViewById(R.id.lamp);
+        final WebView video = findViewById(R.id.videoview);
+        Button preview = findViewById(R.id.prview);
+        final TextView temp = findViewById(R.id.temp);
+        final TextView hum = findViewById(R.id.hum);
+        final TextView pres = findViewById(R.id.press);
+        final TextView alltitude = findViewById(R.id.allt);
+        final TextView kitchen = findViewById(R.id.kitchen);
+        final TextView living_room = findViewById(R.id.living);
+        final TextView hall = findViewById(R.id.hall);
+        final TextView stairs = findViewById(R.id.stair);
 
         //while(login_done == false) {
             Login2();
@@ -94,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
                     String payload = "on off switch 1";
                     byte[] encodedPayload = new byte[0];
                     try {
-                        encodedPayload = payload.getBytes("UTF-8");
+                        encodedPayload = payload.getBytes(StandardCharsets.UTF_8);
                         MqttMessage message = new MqttMessage(encodedPayload);
                         client.publish(topic, message);
-                    } catch (UnsupportedEncodingException | MqttException e) {
+                    } catch (MqttException e) {
                         e.printStackTrace();
                     }
 //unchecked
@@ -107,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
                     String payload = "on off switch 0"; // unchecked process message
                     byte[] encodedPayload = new byte[0];
                     try {
-                        encodedPayload = payload.getBytes("UTF-8");
+                        encodedPayload = payload.getBytes(StandardCharsets.UTF_8);
                         MqttMessage message = new MqttMessage(encodedPayload);
                         client.publish(topic, message);
-                    } catch (UnsupportedEncodingException | MqttException e) {
+                    } catch (MqttException e) {
                         e.printStackTrace();
                     }
                 }
@@ -125,10 +127,10 @@ public class MainActivity extends AppCompatActivity {
                     String payload = "left";
                     byte[] encodedPayload = new byte[0];
                     try {
-                        encodedPayload = payload.getBytes("UTF-8");
+                        encodedPayload = payload.getBytes(StandardCharsets.UTF_8);
                         MqttMessage message = new MqttMessage(encodedPayload);
                         client.publish(topic, message);
-                    } catch (UnsupportedEncodingException | MqttException e) {
+                    } catch (MqttException e) {
                         e.printStackTrace();
                     }
 
@@ -138,10 +140,10 @@ public class MainActivity extends AppCompatActivity {
                     String payload = "right";
                     byte[] encodedPayload = new byte[0];
                     try {
-                        encodedPayload = payload.getBytes("UTF-8");
+                        encodedPayload = payload.getBytes(StandardCharsets.UTF_8);
                         MqttMessage message = new MqttMessage(encodedPayload);
                         client.publish(topic, message);
-                    } catch (UnsupportedEncodingException | MqttException e) {
+                    } catch (MqttException e) {
                         e.printStackTrace();
                     }
                 }
@@ -156,10 +158,10 @@ public class MainActivity extends AppCompatActivity {
                     String payload = "lamp 1";
                     byte[] encodedPayload = new byte[0];
                     try {
-                        encodedPayload = payload.getBytes("UTF-8");
+                        encodedPayload = payload.getBytes(StandardCharsets.UTF_8);
                         MqttMessage message = new MqttMessage(encodedPayload);
                         client.publish(topic, message);
-                    } catch (UnsupportedEncodingException | MqttException e) {
+                    } catch (MqttException e) {
                         e.printStackTrace();
                     }
 
@@ -169,10 +171,10 @@ public class MainActivity extends AppCompatActivity {
                     String payload = "lamp 0";
                     byte[] encodedPayload = new byte[0];
                     try {
-                        encodedPayload = payload.getBytes("UTF-8");
+                        encodedPayload = payload.getBytes(StandardCharsets.UTF_8);
                         MqttMessage message = new MqttMessage(encodedPayload);
                         client.publish(topic, message);
-                    } catch (UnsupportedEncodingException | MqttException e) {
+                    } catch (MqttException e) {
                         e.printStackTrace();
                     }
                 }
@@ -291,8 +293,8 @@ void Login2(){
     void Login(){
 
         final LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.login, null);
-        final EditText user = (EditText) linearLayout.findViewById(R.id.user);
-        final EditText passwd = (EditText) linearLayout.findViewById(R.id.password);
+        final EditText user = linearLayout.findViewById(R.id.user);
+        final EditText passwd = linearLayout.findViewById(R.id.password);
         //final EditText ipadd = (EditText) linearLayout.findViewById(R.id.ip);
         //final Button login = (Button) linearLayout.findViewById(R.id.login);
         final AlertDialog builder = new AlertDialog.Builder(this)
